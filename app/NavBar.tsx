@@ -7,7 +7,6 @@ import { AiFillBug } from "react-icons/ai";
 
 const NavBar = () => {
   const pathname = usePathname();
-  console.log(pathname);
 
   const navbar = [
     { label: "Dashboard", href: "/" },
@@ -20,7 +19,7 @@ const NavBar = () => {
       </Link>
       <ul className="flex space-x-6">
         {navbar.map((link) => (
-          <li>
+          <li key={link.href}>
             <Link
               className={classNames({
                 'text-zinc-500': link.href !== pathname,
