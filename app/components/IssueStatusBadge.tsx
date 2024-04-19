@@ -4,7 +4,7 @@ import React from 'react'
 
 const statusMap : Record <Status, {label:string, color: 'red' | 'violet' | 'green'}> = {
     'OPEN': {label: 'Open', color:'red'},
-    'CLOSE': {label: 'close', color:'violet'},
+    'CLOSE': {label: 'Closed', color:'violet'},
     'IN_PROGRESS': {label: 'In Progress', color:'green'}
 }
 const IssueStatusBadge = ({status}: {status: Status}) => {
