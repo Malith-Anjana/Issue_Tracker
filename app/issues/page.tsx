@@ -5,10 +5,17 @@ import delay from 'delay'
 import IssueStatusBadge from '../components/IssueStatusBadge'
 import IssueActions from './IssueActions'
 import Link from '../components/Link'
+import { notFound } from 'next/navigation'
 
 const IssuePage = async() => {
- const issues =  await prisma.issue.findMany();
- await delay(1000);
+  let issues;
+  try {
+    issues =  await prisma.issue.findMany();
+    await delay(1000); 
+  } catch (error) {
+    notFound();
+  }
+
   return (
     <div>
       <IssueActions/>

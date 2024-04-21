@@ -1,16 +1,16 @@
 "use client";
-import { Button, Callout, Text, TextField } from "@radix-ui/themes";
-import React, { useState } from "react";
-import axios from "axios";
-import SimpleMDE from "react-simplemde-editor";
-import "easymde/dist/easymde.min.css";
-import { useForm, Controller } from "react-hook-form";
-import { useRouter } from "next/navigation";
-import { createIssueSchema } from "@/app/validationSchemas";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
+import { createIssueSchema } from "@/app/validationSchemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, Callout, TextField } from "@radix-ui/themes";
+import axios from "axios";
+import "easymde/dist/easymde.min.css";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import SimpleMDE from "react-simplemde-editor";
+import { z } from "zod";
 
 type IssueForm = z.infer<typeof createIssueSchema>;
 
@@ -36,6 +36,7 @@ const NewIssuePage = () => {
       setError("An unexpected error occured!");
     }
   });
+
 
   return (
     <div className="max-w-xl">
