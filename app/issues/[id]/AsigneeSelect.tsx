@@ -4,7 +4,7 @@ import { Select } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Skeleton from "@/app/components/Skeleton";
-
+import toast, {Toaster} from 'react-hot-toast'
 const AsigneeSelect = ({ issue }: { issue: Issue }) => {
   const {
     data: users,
@@ -20,12 +20,13 @@ const AsigneeSelect = ({ issue }: { issue: Issue }) => {
   if (error) return null;
 
   return (
+    <>
     <Select.Root
       defaultValue={issue.assignedToUserId || "null"}
       onValueChange={(userId) => {
         axios.patch("/api/issues/" + issue.id, {
           assignedToUserId: userId !== "null"?userId : null,
-        })}}
+        }).catch(()=> toast.error("Changes could not be saved!"))}}
     >
       <Select.Trigger placeholder="Assign..." />
       <Select.Content>
@@ -40,6 +41,8 @@ const AsigneeSelect = ({ issue }: { issue: Issue }) => {
         </Select.Group>
       </Select.Content>
     </Select.Root>
+    <Toaster/>
+    </>
   );
 };
 
