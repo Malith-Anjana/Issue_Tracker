@@ -16,13 +16,13 @@ export async function PATCH (request:NextRequest, {params}: {params: {id:string}
         return NextResponse.json(validation.error.format(), {status:400})
     
     const {assignedToUserId, title, description} = body;
-
+    console.log(assignedToUserId)
     if(assignedToUserId){
         const user = prisma.user.findUnique({
             where: {id: assignedToUserId}
         });
         if(!user)
-            return NextResponse.json({error: "Invalid User Id"}, {status: 400})
+            return NextResponse.json({error: "Invalid User"}, {status: 400})
     
     }
         
