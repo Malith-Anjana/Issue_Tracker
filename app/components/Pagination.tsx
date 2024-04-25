@@ -1,5 +1,13 @@
-import { ChevronLeftIcon, ChevronRightIcon, DoubleArrowLeftIcon, DoubleArrowRightIcon } from "@radix-ui/react-icons";
+'use client'
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  DoubleArrowLeftIcon,
+  DoubleArrowRightIcon,
+} from "@radix-ui/react-icons";
 import { Button, Flex, Text } from "@radix-ui/themes";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface Props {
@@ -8,24 +16,34 @@ interface Props {
   pageSize: number;
 }
 const Pagination = ({ itemCount, currentPage, pageSize }: Props) => {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+
   const pageCount = Math.ceil(itemCount / pageSize);
   if (pageCount <= 1) return null;
+
+  const changePage = (page: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', page.toString());
+    router.push('?' + params.toString())
+  }
+
   return (
-    <Flex align='center' gap='3'>
+    <Flex align="center" gap="3">
       <Text size="2">
         Page {currentPage} of {pageCount}
       </Text>
-      <Button color="gray" variant="soft" disabled={currentPage === 1}>
-        <DoubleArrowLeftIcon/>
+      <Button onClick={()=> changePage(1)} color="gray" variant="soft" disabled={currentPage === 1}>
+        <DoubleArrowLeftIcon />
       </Button>
-      <Button color="gray" variant="soft" disabled={currentPage === 1}>
-        <ChevronLeftIcon/>
+      <Button onClick={()=> changePage( currentPage - 1)} color="gray" variant="soft" disabled={currentPage === 1}>
+        <ChevronLeftIcon />
       </Button>
-      <Button color="gray" variant="soft" disabled={currentPage === pageCount}>
-        <ChevronRightIcon/>
+      <Button onClick={()=> changePage(currentPage + 1)} color="gray" variant="soft" disabled={currentPage === pageCount}>
+        <ChevronRightIcon />
       </Button>
-      <Button color="gray" variant="soft" disabled={currentPage === pageCount}>
-        <DoubleArrowRightIcon/>
+      <Button onClick={()=> changePage(pageCount)} color="gray" variant="soft" disabled={currentPage === pageCount}>
+        <DoubleArrowRightIcon />
       </Button>
     </Flex>
   );
