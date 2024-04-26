@@ -3,10 +3,11 @@ import { Spinner } from "@/app/components";
 import { EraserIcon } from "@radix-ui/react-icons";
 import { AlertDialog, Button, Flex} from "@radix-ui/themes";
 import axios from "axios";
+import { Session } from "next-auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
+const DeleteIssueButton = ({ issueId, session }: { issueId: number, session:Session | null}) => {
   const router = useRouter();
   const [error, setError]=useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -23,7 +24,7 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
     <>
     <AlertDialog.Root>
       <AlertDialog.Trigger>
-        <Button color="red" disabled={isDeleting}><EraserIcon/>Delete Issue
+        <Button color="red" disabled={isDeleting || (session?false:true)}><EraserIcon/>Delete Issue
         {isDeleting && <Spinner/>}</Button>
       </AlertDialog.Trigger>
       <AlertDialog.Content>

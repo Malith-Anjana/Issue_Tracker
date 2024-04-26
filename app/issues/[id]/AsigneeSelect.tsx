@@ -1,11 +1,11 @@
 "use client";
+import Skeleton from "@/app/components/Skeleton";
 import { Issue, User } from "@prisma/client";
 import { Select } from "@radix-ui/themes";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import Skeleton from "@/app/components/Skeleton";
 import toast, { Toaster } from "react-hot-toast";
-const AsigneeSelect = ({ issue }: { issue: Issue }) => {
+const AsigneeSelect = ({ issue}: { issue: Issue }) => {
   const {
     data: users,
     error,
@@ -17,7 +17,7 @@ const AsigneeSelect = ({ issue }: { issue: Issue }) => {
     retry: 3,
   });
   if (isLoading) return <Skeleton />;
-  if (error) return null;
+  if (error) return <Select.Root disabled><Select.Trigger placeholder="Assignee..."/></Select.Root>;
 
   const assignIssue = (userId: string) => {
     axios

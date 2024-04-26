@@ -23,17 +23,15 @@ const IssueDetailPage = async ({ params }: Props) => {
   return (
     <Grid columns={{ initial: "1", sm: "5" }} gap="5">
       <Box className="md:col-span-4 ">
-        <IssueDetails issue={issue} />
+        <IssueDetails issue={issue} session={session}/>
       </Box>
-      {session && (
         <Box>
           <Flex direction="column" gap="4">
             <AsigneeSelect issue={issue}/>
-            <EditIssueButton issueId={issue.id} />
-            <DeleteIssueButton issueId={issue.id} />
+            <EditIssueButton issueId={issue.id} session={session}/>
+            <DeleteIssueButton issueId={issue.id} session={session}/>
           </Flex>
         </Box>
-      )}
     </Grid>
   );
 };
