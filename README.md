@@ -8,12 +8,13 @@ You can access the live demo [here](https://issue-tracker-sable-delta.vercel.app
 
 ## Installation
 
-1.  Clone the project repository:
+Clone the project repository:
 
-    `git clone https://github.com/Malith-Anjana/Issue_Tracker.git`
+`git clone (https://github.com/Malith-Anjana/Issue_Tracker.git)`
 
-2.  Install dependencies:
-    `npm install`
+Install dependencies:
+
+`npm install`
 
 
 ## Usage
