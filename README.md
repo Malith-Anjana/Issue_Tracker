@@ -5,7 +5,7 @@ Issue Tracker is a web application designed for tracking issues, allowing users 
 
 ## Demo
 
-You can access the live demo [here](https://issue-tracker-sable-delta.vercel.app/)
+You can access the live demo of the Issue Tracker app [here](https://issue-tracker-sable-delta.vercel.app/)
 
 ## Installation
 
