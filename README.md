@@ -10,22 +10,22 @@ You can access the live demo [here](https://issue-tracker-sable-delta.vercel.app
 
 Clone the project repository:
 
-`git clone (https://github.com/Malith-Anjana/Issue_Tracker.git)`
+```git clone https://github.com/Malith-Anjana/Issue_Tracker.git```
 
 Install dependencies:
 
-`npm install`
+```npm install```
 
 
 ## Usage
 
 To run the project locally, use the following command:
 
-`npm run dev`
+```npm run dev```
 
 To perform schema migration, use Prisma:
 
-`npx prisma migrate dev`
+```npx prisma migrate dev```
 
 ## Features
 
